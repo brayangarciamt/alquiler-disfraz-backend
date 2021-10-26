@@ -1,5 +1,6 @@
 package ciclo3.proyecto.modelo;
 
+// import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,7 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name = "reservacion")
@@ -20,14 +26,29 @@ public class Reservacion{
     @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer idReservation;
 
-    @Column(length = 250)
+    @Column
     private Date startDate;
-
-    @Column
     private Date devolutionDate;
+    private String status = "created";
 
-    @Column
-    private String status;
+    /**
+     * Relacion muchos a unos con entidad Disfraz
+     * 
+     */
+    @ManyToOne
+    @JoinColumn(name = "fk_id_costume")
+    @JsonIgnoreProperties({"reservations"})
+    private Disfraz costume;
+
+    /**
+     * Relacion muchos a uno con entidad Cliente
+     */
+    @ManyToOne
+    @JoinColumn(name = "fk_id_client")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Cliente client;
+
+    private String score;
 
     public Reservacion() {
         /**
@@ -35,11 +56,15 @@ public class Reservacion{
          */
     }
 
-    public Reservacion(Integer idReservation, Date startDate, Date devolutionDate, String status) {
+    public Reservacion(Integer idReservation, Date startDate, Date devolutionDate, String status, Disfraz costume,
+            Cliente client, String score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.status = status;
+        this.costume = costume;
+        this.client = client;
+        this.score = score;
     }
 
     public Integer getIdReservation() {
@@ -72,6 +97,31 @@ public class Reservacion{
 
     public void setStatus(String status) {
         this.status = status;
-    }  
+    }
+
+    public Disfraz getCostume() {
+        return costume;
+    }
+
+    public void setCostume(Disfraz costume) {
+        this.costume = costume;
+    }
+
+    public Cliente getClient() {
+        return client;
+    }
+
+    public void setClient(Cliente client) {
+        this.client = client;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
 
 }

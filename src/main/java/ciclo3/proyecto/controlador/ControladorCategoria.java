@@ -40,8 +40,8 @@ public class ControladorCategoria {
 
     @PostMapping("/save")  
     @ResponseStatus(HttpStatus.CREATED)
-    public Categoria anadirCategoria(@RequestBody Categoria Categoria){
-        return serviciosCategoria.crearCategoria(Categoria);
+    public Categoria anadirCategoria(@RequestBody Categoria categoria){
+        return serviciosCategoria.crearCategoria(categoria);
     }
 
     @DeleteMapping("/{id}")
