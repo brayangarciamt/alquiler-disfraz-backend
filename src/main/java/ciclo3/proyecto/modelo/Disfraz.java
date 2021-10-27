@@ -35,7 +35,7 @@ public class Disfraz{
     private String brand;
 
     @Column(length = 4)
-    private Integer model;
+    private Integer year;
 
     @Column(length = 250)
     private String description;
@@ -69,12 +69,12 @@ public class Disfraz{
          */
     }
 
-    public Disfraz(Integer id, String name, String brand, Integer model, String description, Categoria category,
+    public Disfraz(Integer id, String name, String brand, Integer year, String description, Categoria category,
             List<Mensaje> messages, List<Reservacion> reservations) {
         this.id = id;
         this.name = name;
         this.brand = brand;
-        this.model = model;
+        this.year = year;
         this.description = description;
         this.category = category;
         this.messages = messages;
@@ -105,12 +105,12 @@ public class Disfraz{
         this.brand = brand;
     }
 
-    public Integer getModel() {
-        return model;
+    public Integer getYear() {
+        return year;
     }
 
-    public void setModel(Integer model) {
-        this.model = model;
+    public void setYear(Integer year) {
+        this.year = year;
     }
 
     public String getDescription() {
