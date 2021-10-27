@@ -25,14 +25,14 @@ public class Cliente{
     @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer idClient;
 
-    @Column(length = 250)
-    private String name;
-
     @Column(length = 45)
     private String email;
 
     @Column(length = 45)
     private String password;
+
+    @Column(length = 250)
+    private String name;
 
     @Column(length = 3)
     private Integer age;
