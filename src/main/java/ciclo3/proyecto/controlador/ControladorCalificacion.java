@@ -52,7 +52,7 @@ public class ControladorCalificacion {
     }
 
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public Calificacion actualizarCalificacion(@RequestBody Calificacion calificacion){
         return serviciosCalificacion.actualizaCalificacion(calificacion);
     }

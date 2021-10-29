@@ -52,7 +52,7 @@ public class ControladorMensaje {
     }
 
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public Mensaje actualizaMensaje(@RequestBody Mensaje mensaje){
         return serviciosMensaje.actualizaMensaje(mensaje);
     }

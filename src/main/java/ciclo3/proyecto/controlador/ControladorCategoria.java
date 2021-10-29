@@ -46,13 +46,13 @@ public class ControladorCategoria {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean eliminarCategoria(@PathVariable("id") Integer id){
         return serviciosCategoria.borrarCategoria(id);
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public Categoria actualizarCategoria(@RequestBody Categoria categoria){
         return serviciosCategoria.actualizaCategoria(categoria);
     }

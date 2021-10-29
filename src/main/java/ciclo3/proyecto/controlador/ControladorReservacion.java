@@ -52,7 +52,7 @@ public class ControladorReservacion {
     }
 
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.OK)
     public Reservacion actualizarReservacion(@RequestBody Reservacion reservacion){
         return serviciosReservacion.actualizaReservacion(reservacion);
     }
