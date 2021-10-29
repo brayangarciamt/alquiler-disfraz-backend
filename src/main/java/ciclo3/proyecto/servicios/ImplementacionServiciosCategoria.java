@@ -28,13 +28,14 @@ public class ImplementacionServiciosCategoria implements ServiciosCategoria{
     @Override
     public Categoria crearCategoria(Categoria categoria) {
         
+        return repositorioCategoria.save(categoria);
 
-        if (repositorioCategoria.findById(categoria.getId()).isPresent()){
-            return null;
-        }
-        else{
-            return repositorioCategoria.save(categoria);
-        }
+        // if (repositorioCategoria.findById(categoria.getId()).isPresent()){
+        //     return null;
+        // }
+        // else{
+        //     return repositorioCategoria.save(categoria);
+        // }
     }
 
     @Override
@@ -53,11 +54,13 @@ public class ImplementacionServiciosCategoria implements ServiciosCategoria{
     @Override
     public Categoria actualizaCategoria (Categoria categoria) {
 
-        if (repositorioCategoria.findById(categoria.getId()).isPresent()){
-            return repositorioCategoria.save(categoria);
-        }
-        else{
-            return null;
-        }
+        return repositorioCategoria.save(categoria);
+
+        // if (repositorioCategoria.findById(categoria.getId()).isPresent()){
+        //     return repositorioCategoria.save(categoria);
+        // }
+        // else{
+        //     return null;
+        // }
     }
 }

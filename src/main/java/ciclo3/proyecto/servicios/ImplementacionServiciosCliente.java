@@ -28,12 +28,14 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
     @Override
     public Cliente crearCliente(Cliente cliente) {
 
-        if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
-            return null;
-        }
-        else{
-            return repositorioCliente.save(cliente);
-        }
+        return repositorioCliente.save(cliente);
+
+        // if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
+        //     return null;
+        // }
+        // else{
+        //     return repositorioCliente.save(cliente);
+        // }
     }
 
     @Override
@@ -52,11 +54,13 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
     @Override
     public Cliente actualizaCliente(Cliente cliente) {
 
-        if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
-            return repositorioCliente.save(cliente);
-        }
-        else{
-            return null;
-        }
+        return repositorioCliente.save(cliente);
+
+        // if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
+        //     return repositorioCliente.save(cliente);
+        // }
+        // else{
+        //     return null;
+        // }
     }
 }

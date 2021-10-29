@@ -28,12 +28,14 @@ public class ImplementacionServiciosDisfraz implements ServiciosDisfraz{
     @Override
     public Disfraz crearDisfraz(Disfraz disfraz) {
 
-        if (repositorioDisfraz.findById(disfraz.getId()).isPresent()){
-            return null;
-        }
-        else{
-            return repositorioDisfraz.save(disfraz);
-        }
+        return repositorioDisfraz.save(disfraz);
+
+        // if (repositorioDisfraz.findById(disfraz.getId()).isPresent()){
+        //     return null;
+        // }
+        // else{
+        //     return repositorioDisfraz.save(disfraz);
+        // }
     }
 
     @Override
@@ -52,12 +54,14 @@ public class ImplementacionServiciosDisfraz implements ServiciosDisfraz{
     @Override
     public Disfraz actualizaDisfraz(Disfraz disfraz) {
 
-        if (repositorioDisfraz.findById(disfraz.getId()).isPresent()){
-            return repositorioDisfraz.save(disfraz);
-        }
-        else{
-            return null;
-        }
+        return repositorioDisfraz.save(disfraz);
+        
+        // if (repositorioDisfraz.findById(disfraz.getId()).isPresent()){
+        //     return repositorioDisfraz.save(disfraz);
+        // }
+        // else{
+        //     return null;
+        // }
     }
     
 }
