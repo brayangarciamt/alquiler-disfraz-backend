@@ -52,7 +52,7 @@ public class ControladorCategoria {
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Categoria actualizarCategoria(@RequestBody Categoria categoria){
         return serviciosCategoria.actualizaCategoria(categoria);
     }

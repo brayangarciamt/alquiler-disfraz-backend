@@ -51,7 +51,7 @@ public class ControladorDisfraz {
     }
 
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Disfraz actualizarDisfraz(@RequestBody Disfraz disfraz){
         return serviciosDisfraz.actualizaDisfraz(disfraz);
     }
