@@ -14,4 +14,5 @@ public interface ServiciosCalificacion {
     public Optional<Calificacion> listarCalificacionId(Integer id);
     public Calificacion crearCalificacion(Calificacion calificacion);
     public boolean borrarCalificacion(Integer id);
+    public Calificacion actualizaCalificacion(Calificacion calificacion);
 }

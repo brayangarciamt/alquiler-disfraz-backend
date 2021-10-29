@@ -14,5 +14,5 @@ public interface ServiciosCliente {
     public Optional<Cliente> listarClienteId(Integer id);
     public Cliente crearCliente(Cliente cliente);
     public boolean borrarCliente(Integer id);
-    
+    public Cliente actualizaCliente(Cliente cliente);
 }

@@ -27,7 +27,13 @@ public class ImplementacionServiciosMensaje implements ServiciosMensaje{
 
     @Override
     public Mensaje crearMensaje(Mensaje mensaje) {
-        return repositorioMensaje.save(mensaje);
+        
+        if (repositorioMensaje.findById(mensaje.getIdMessage()).isPresent()){
+            return null;
+        }
+        else{
+            return repositorioMensaje.save(mensaje);
+        }
     }
 
     @Override
@@ -43,4 +49,14 @@ public class ImplementacionServiciosMensaje implements ServiciosMensaje{
         return estado;
     }
     
+    @Override
+    public Mensaje actualizaMensaje(Mensaje mensaje) {
+
+        if (repositorioMensaje.findById(mensaje.getIdMessage()).isPresent()){
+            return repositorioMensaje.save(mensaje);
+        }
+        else{
+            return null;
+        }
+    }
 }

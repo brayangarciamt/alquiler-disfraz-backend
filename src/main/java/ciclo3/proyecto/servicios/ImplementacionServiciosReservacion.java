@@ -27,7 +27,14 @@ public class ImplementacionServiciosReservacion implements ServiciosReservacion{
 
     @Override
     public Reservacion crearReservacion(Reservacion reservacion) {
-        return repositorioReservacion.save(reservacion);
+        
+
+        if (repositorioReservacion.findById(reservacion.getIdReservation()).isPresent()){
+            return null;
+        }
+        else{
+            return repositorioReservacion.save(reservacion);
+        }
     }
 
     @Override
@@ -41,6 +48,17 @@ public class ImplementacionServiciosReservacion implements ServiciosReservacion{
             estado=false;
         }
         return estado;
+    }
+
+    @Override
+    public Reservacion actualizaReservacion (Reservacion reservacion) {
+
+        if (repositorioReservacion.findById(reservacion.getIdReservation()).isPresent()){
+            return repositorioReservacion.save(reservacion);
+        }
+        else{
+            return null;
+        }
     }
     
 }

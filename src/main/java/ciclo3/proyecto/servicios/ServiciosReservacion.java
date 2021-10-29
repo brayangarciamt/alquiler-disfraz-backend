@@ -14,4 +14,5 @@ public interface ServiciosReservacion {
     public Optional<Reservacion> listarReservacionId(Integer id);
     public Reservacion crearReservacion(Reservacion reservacion);
     public boolean borrarReservacion(Integer id);
+    public Reservacion actualizaReservacion(Reservacion reservacion);
 }

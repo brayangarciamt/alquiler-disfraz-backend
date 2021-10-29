@@ -27,7 +27,13 @@ public class ImplementacionServiciosCalificacion implements ServiciosCalificacio
 
     @Override
     public Calificacion crearCalificacion(Calificacion calificacion) {
-        return repositorioCalificacion.save(calificacion);
+        
+        if (repositorioCalificacion.findById(calificacion.getId()).isPresent()){
+            return null;
+        }
+        else{
+            return repositorioCalificacion.save(calificacion);
+        }
     }
 
     @Override
@@ -41,6 +47,17 @@ public class ImplementacionServiciosCalificacion implements ServiciosCalificacio
             estado=false;
         }
         return estado;
+    }
+
+    @Override
+    public Calificacion actualizaCalificacion(Calificacion calificacion) {
+
+        if (repositorioCalificacion.findById(calificacion.getId()).isPresent()){
+            return repositorioCalificacion.save(calificacion);
+        }
+        else{
+            return null;
+        }
     }
     
 }
