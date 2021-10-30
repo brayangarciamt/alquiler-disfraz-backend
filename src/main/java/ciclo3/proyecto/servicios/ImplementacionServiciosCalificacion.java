@@ -58,8 +58,8 @@ public class ImplementacionServiciosCalificacion implements ServiciosCalificacio
                 }
                 
             if(calificacion.getScoreMessage()!=calificacionCopia.get().getScoreMessage()
-            &&!calificacion.getScoreMessage().isEmpty()){
-                calificacionCopia.get().setScoreMessage(calificacion.getScoreMessage());
+                &&!calificacion.getScoreMessage().isEmpty()){
+                    calificacionCopia.get().setScoreMessage(calificacion.getScoreMessage());
                 }
 
             return repositorioCalificacion.save(calificacionCopia.get());

@@ -57,8 +57,8 @@ public class ImplementacionServiciosCategoria implements ServiciosCategoria{
                 }
             
             if(categoria.getDescription()!=categoriaCopia.get().getDescription()
-            &&categoria.getDescription()!=null){
-                categoriaCopia.get().setDescription(categoria.getDescription());
+                &&categoria.getDescription()!=null){
+                    categoriaCopia.get().setDescription(categoria.getDescription());
                 }
 
             return repositorioCategoria.save(categoriaCopia.get());

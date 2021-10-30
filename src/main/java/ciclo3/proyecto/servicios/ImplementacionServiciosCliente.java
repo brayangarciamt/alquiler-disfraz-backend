@@ -57,9 +57,19 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
                 }
             
             if(cliente.getEmail()!=clienteCopia.get().getEmail()
-            &&cliente.getEmail()!=null){
-                clienteCopia.get().setEmail(cliente.getEmail());
+                &&cliente.getEmail()!=null){
+                    clienteCopia.get().setEmail(cliente.getEmail());
                 }
+
+            if(cliente.getPassword()!=clienteCopia.get().getPassword()
+                &&cliente.getPassword()!=null){
+                    clienteCopia.get().setPassword(cliente.getPassword());
+                }
+            
+            if(cliente.getAge()!=clienteCopia.get().getAge()
+                &&cliente.getAge()!=null){
+                    clienteCopia.get().setAge(cliente.getAge());
+            }
 
             return repositorioCliente.save(clienteCopia.get());
         }

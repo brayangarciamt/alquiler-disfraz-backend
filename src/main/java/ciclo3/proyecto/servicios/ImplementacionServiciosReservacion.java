@@ -57,13 +57,13 @@ public class ImplementacionServiciosReservacion implements ServiciosReservacion{
                 }
 
             if(reservacion.getDevolutionDate()!=reservacionCopia.get().getDevolutionDate()
-            &&reservacion.getDevolutionDate()!=null){
-                reservacionCopia.get().setDevolutionDate(reservacion.getDevolutionDate());
+                &&reservacion.getDevolutionDate()!=null){
+                    reservacionCopia.get().setDevolutionDate(reservacion.getDevolutionDate());
                 }
 
             if(reservacion.getStatus()!=reservacionCopia.get().getStatus()
-            &&reservacion.getStatus()!=null){
-                reservacionCopia.get().setStatus(reservacion.getStatus());
+                &&reservacion.getStatus()!=null){
+                    reservacionCopia.get().setStatus(reservacion.getStatus());
                 }
             
             return repositorioReservacion.save(reservacionCopia.get());

@@ -57,18 +57,18 @@ public class ImplementacionServiciosDisfraz implements ServiciosDisfraz{
                 }
                 
             if(disfraz.getBrand()!=disfrazCopia.get().getBrand()
-            &&!disfraz.getBrand().isEmpty()){
-                disfrazCopia.get().setBrand(disfraz.getBrand());
+                &&!disfraz.getBrand().isEmpty()){
+                    disfrazCopia.get().setBrand(disfraz.getBrand());
                 }
 
             if(disfraz.getYear()!=disfrazCopia.get().getYear()
-            &&disfraz.getYear()!=null){
-                disfrazCopia.get().setYear(disfraz.getYear());
+                &&disfraz.getYear()!=null){
+                    disfrazCopia.get().setYear(disfraz.getYear());
                 }
 
             if(disfraz.getDescription()!=disfrazCopia.get().getDescription()
-            &&!disfraz.getDescription().isEmpty()){
-                disfrazCopia.get().setDescription(disfraz.getDescription());
+                &&!disfraz.getDescription().isEmpty()){
+                    disfrazCopia.get().setDescription(disfraz.getDescription());
                 }
 
             return repositorioDisfraz.save(disfrazCopia.get());
