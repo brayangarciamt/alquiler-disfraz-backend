@@ -29,13 +29,6 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
     public Cliente crearCliente(Cliente cliente) {
 
         return repositorioCliente.save(cliente);
-
-        // if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
-        //     return null;
-        // }
-        // else{
-        //     return repositorioCliente.save(cliente);
-        // }
     }
 
     @Override
@@ -54,13 +47,24 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
     @Override
     public Cliente actualizaCliente(Cliente cliente) {
 
-        return repositorioCliente.save(cliente);
+        if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
+            
+            Optional<Cliente> clienteCopia = repositorioCliente.findById(cliente.getIdClient());
 
-        // if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
-        //     return repositorioCliente.save(cliente);
-        // }
-        // else{
-        //     return null;
-        // }
+            if(cliente.getName()!=clienteCopia.get().getName()
+                &&cliente.getName()!=null){
+                    clienteCopia.get().setName(cliente.getName());
+                }
+            
+            if(cliente.getEmail()!=clienteCopia.get().getEmail()
+            &&cliente.getEmail()!=null){
+                clienteCopia.get().setEmail(cliente.getEmail());
+                }
+
+            return repositorioCliente.save(clienteCopia.get());
+        }
+        else{
+            return null;
+        }
     }
 }
