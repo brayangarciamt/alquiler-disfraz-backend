@@ -3,6 +3,7 @@ package ciclo3.proyecto.modelo;
 // import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -48,7 +50,12 @@ public class Reservacion{
     @JsonIgnoreProperties({"messages","reservations"})
     private Cliente client;
 
-    private String score;
+    /**
+     * Relacion uno a uno con entidad calificacion
+     */
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy = "reservation")
+    @JsonIgnoreProperties({"reservation"})
+    private Calificacion score;
 
     public Reservacion() {
         /**
@@ -57,7 +64,7 @@ public class Reservacion{
     }
 
     public Reservacion(Integer idReservation, Date startDate, Date devolutionDate, String status, Disfraz costume,
-            Cliente client, String score) {
+            Cliente client, Calificacion score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
@@ -115,11 +122,11 @@ public class Reservacion{
         this.client = client;
     }
 
-    public String getScore() {
+    public Calificacion getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Calificacion score) {
         this.score = score;
     }
 

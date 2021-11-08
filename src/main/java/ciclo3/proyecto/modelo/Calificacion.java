@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -19,11 +23,19 @@ public class Calificacion {
     @GeneratedValue (strategy=GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 250)
+    @Column(length = 1)
     private Integer score;
 
     @Column(length = 250)
     private String scoreMessage;
+
+    /**
+     * Relacion uno a uno con entidad reservacion
+     */
+    @OneToOne
+    @JoinColumn(name = "fk_id_reservation")
+    @JsonIgnoreProperties({"score"})
+    private Reservacion reservation;
 
     public Calificacion() {
         /**
@@ -31,10 +43,11 @@ public class Calificacion {
          */
     }
 
-    public Calificacion(Integer id, Integer score, String scoreMessage) {
+    public Calificacion(Integer id, Integer score, String scoreMessage, Reservacion reservation) {
         this.id = id;
         this.score = score;
         this.scoreMessage = scoreMessage;
+        this.reservation = reservation;
     }
 
     public Integer getId() {
@@ -61,6 +74,12 @@ public class Calificacion {
         this.scoreMessage = scoreMessage;
     }
 
-    
+    public Reservacion getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservacion reservation) {
+        this.reservation = reservation;
+    }   
 
 }

@@ -52,14 +52,14 @@ public class Disfraz{
     /**
      * relacion uno a muchos con entidad Mensaje
      */
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "costume")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "costume")
     @JsonIgnoreProperties({"costume","client"})
     private List<Mensaje> messages;
     
     /**
      * relacion uno a muchos con entidad Reservacion
      */
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "costume")
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "costume")
     @JsonIgnoreProperties({"costume"})
     private List<Reservacion> reservations;
 
