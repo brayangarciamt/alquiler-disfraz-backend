@@ -15,5 +15,6 @@ public interface ServiciosCategoria {
     public Optional<Categoria> listarCategoriaId(Integer id);
     public Categoria crearCategoria(Categoria categoria);
     public boolean borrarCategoria(Integer id);
+    public Categoria actualizaCategoria(Categoria categoria);
     
 }

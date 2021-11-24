@@ -26,8 +26,9 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
     }
 
     @Override
-    public Cliente crearCliente(Cliente disfraz) {
-        return repositorioCliente.save(disfraz);
+    public Cliente crearCliente(Cliente cliente) {
+
+        return repositorioCliente.save(cliente);
     }
 
     @Override
@@ -41,5 +42,39 @@ public class ImplementacionServiciosCliente implements ServiciosCliente{
             estado=false;
         }
         return estado;
+    }
+
+    @Override
+    public Cliente actualizaCliente(Cliente cliente) {
+
+        if (repositorioCliente.findById(cliente.getIdClient()).isPresent()){
+            
+            Optional<Cliente> clienteCopia = repositorioCliente.findById(cliente.getIdClient());
+
+            if(cliente.getName()!=clienteCopia.get().getName()
+                &&cliente.getName()!=null){
+                    clienteCopia.get().setName(cliente.getName());
+                }
+            
+            if(cliente.getEmail()!=clienteCopia.get().getEmail()
+                &&cliente.getEmail()!=null){
+                    clienteCopia.get().setEmail(cliente.getEmail());
+                }
+
+            if(cliente.getPassword()!=clienteCopia.get().getPassword()
+                &&cliente.getPassword()!=null){
+                    clienteCopia.get().setPassword(cliente.getPassword());
+                }
+            
+            if(cliente.getAge()!=clienteCopia.get().getAge()
+                &&cliente.getAge()!=null){
+                    clienteCopia.get().setAge(cliente.getAge());
+            }
+
+            return repositorioCliente.save(clienteCopia.get());
+        }
+        else{
+            return null;
+        }
     }
 }

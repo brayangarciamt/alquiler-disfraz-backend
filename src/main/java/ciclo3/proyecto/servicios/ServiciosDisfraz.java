@@ -14,4 +14,5 @@ public interface ServiciosDisfraz {
     public Optional<Disfraz> listarDisfrazId(Integer id);
     public Disfraz crearDisfraz(Disfraz disfraz);
     public boolean borrarDisfraz(Integer id);
+    public Disfraz actualizaDisfraz(Disfraz disfraz);
 }

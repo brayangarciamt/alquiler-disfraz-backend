@@ -14,4 +14,5 @@ public interface ServiciosMensaje {
     public Optional<Mensaje> listarMensajeId(Integer id);
     public Mensaje crearMensaje(Mensaje mensaje);
     public boolean borrarMensaje(Integer id);
+    public Mensaje actualizaMensaje(Mensaje mensaje);
 }

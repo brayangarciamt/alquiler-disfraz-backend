@@ -27,6 +27,7 @@ public class ImplementacionServiciosDisfraz implements ServiciosDisfraz{
 
     @Override
     public Disfraz crearDisfraz(Disfraz disfraz) {
+
         return repositorioDisfraz.save(disfraz);
     }
 
@@ -41,6 +42,41 @@ public class ImplementacionServiciosDisfraz implements ServiciosDisfraz{
             estado=false;
         }
         return estado;
+    }
+
+    @Override
+    public Disfraz actualizaDisfraz(Disfraz disfraz) {
+
+        if (repositorioDisfraz.findById(disfraz.getId()).isPresent()){
+
+            Optional<Disfraz> disfrazCopia = repositorioDisfraz.findById(disfraz.getId());
+            
+            if(disfraz.getName()!=disfrazCopia.get().getName()
+                &&!disfraz.getName().isEmpty()){
+                    disfrazCopia.get().setName(disfraz.getName());
+                }
+                
+            if(disfraz.getBrand()!=disfrazCopia.get().getBrand()
+                &&!disfraz.getBrand().isEmpty()){
+                    disfrazCopia.get().setBrand(disfraz.getBrand());
+                }
+
+            if(disfraz.getYear()!=disfrazCopia.get().getYear()
+                &&disfraz.getYear()!=null){
+                    disfrazCopia.get().setYear(disfraz.getYear());
+                }
+
+            if(disfraz.getDescription()!=disfrazCopia.get().getDescription()
+                &&!disfraz.getDescription().isEmpty()){
+                    disfrazCopia.get().setDescription(disfraz.getDescription());
+                }
+
+            return repositorioDisfraz.save(disfrazCopia.get());
+        }
+        else{
+            return null;
+        }
+        
     }
     
 }

@@ -48,8 +48,8 @@ public class Cliente{
     /**
      * Relacion uno a muchos con reservaciones
      */
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
-    @JsonIgnoreProperties({"costume","client"})
+    @OneToMany(cascade = {CascadeType.REMOVE},mappedBy = "client")
+    @JsonIgnoreProperties({"client"})
     private List<Reservacion> reservations;
 
     public Cliente() {

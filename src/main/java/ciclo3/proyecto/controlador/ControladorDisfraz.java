@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -47,6 +48,12 @@ public class ControladorDisfraz {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean eliminarDisfraz(@PathVariable("id") Integer id){
         return serviciosDisfraz.borrarDisfraz(id);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Disfraz actualizarDisfraz(@RequestBody Disfraz disfraz){
+        return serviciosDisfraz.actualizaDisfraz(disfraz);
     }
 
 }

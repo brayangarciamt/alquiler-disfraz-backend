@@ -27,6 +27,7 @@ public class ImplementacionServiciosMensaje implements ServiciosMensaje{
 
     @Override
     public Mensaje crearMensaje(Mensaje mensaje) {
+
         return repositorioMensaje.save(mensaje);
     }
 
@@ -43,4 +44,23 @@ public class ImplementacionServiciosMensaje implements ServiciosMensaje{
         return estado;
     }
     
+    @Override
+    public Mensaje actualizaMensaje(Mensaje mensaje) {
+
+        if (repositorioMensaje.findById(mensaje.getIdMessage()).isPresent()){
+            
+            Optional<Mensaje> mensajeCopia = repositorioMensaje.findById(mensaje.getIdMessage());
+
+            if(mensaje.getMessageText()!=mensajeCopia.get().getMessageText()
+                &&mensaje.getMessageText()!=null){
+                    mensajeCopia.get().setMessageText(mensaje.getMessageText());
+                }
+
+
+            return repositorioMensaje.save(mensajeCopia.get());
+        }
+        else{
+            return null;
+        }
+    }
 }

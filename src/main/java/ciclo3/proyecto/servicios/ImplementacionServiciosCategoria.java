@@ -27,6 +27,7 @@ public class ImplementacionServiciosCategoria implements ServiciosCategoria{
 
     @Override
     public Categoria crearCategoria(Categoria categoria) {
+        
         return repositorioCategoria.save(categoria);
     }
 
@@ -41,5 +42,29 @@ public class ImplementacionServiciosCategoria implements ServiciosCategoria{
             estado=false;
         }
         return estado;
+    }
+
+    @Override
+    public Categoria actualizaCategoria (Categoria categoria) {
+
+        if (repositorioCategoria.findById(categoria.getId()).isPresent()){
+            
+            Optional<Categoria> categoriaCopia = repositorioCategoria.findById(categoria.getId());
+
+            if(categoria.getName()!=categoriaCopia.get().getName()
+                &&categoria.getName()!=null){
+                    categoriaCopia.get().setName(categoria.getName());
+                }
+            
+            if(categoria.getDescription()!=categoriaCopia.get().getDescription()
+                &&categoria.getDescription()!=null){
+                    categoriaCopia.get().setDescription(categoria.getDescription());
+                }
+
+            return repositorioCategoria.save(categoriaCopia.get());
+        }
+        else{
+            return null;
+        }
     }
 }
